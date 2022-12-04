@@ -1,5 +1,8 @@
 package Controller;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 
 import Model.Entrepot;
@@ -7,42 +10,46 @@ import Model.Produit;
 
 public class ProduitController {
 
-    public Produit ajouterProduit(ArrayList<Entrepot> entrepots, int idEntrepot ,int idProduit, String nomProduit, int quantite, String image, String references){
-        Produit produit = new Produit(idProduit,nomProduit,quantite,image,references);
-        ArrayList<Entrepot> entrepotsListe = entrepots;
-        for(int i= 0 ; i < entrepotsListe.size(); i++){
-            if (entrepotsListe.get(i).equals(idEntrepot)){
-                entrepotsListe.get(i).getProduits().add(produit);
-            }
-        }
+    public void ajouterProduit( int idEntrepot , String nomProduit, int quantite, String image, String references, Context c){
+        Context context = c;
+        SharedPreferences sharedPreferencesProduit = context.getSharedPreferences("Produit",0);
+        SharedPreferences.Editor editor = sharedPreferencesProduit.edit();
 
-
-
-        //shared preferences
-        return produit;
+        int idProduit = sharedPreferencesProduit.getInt("idProduit",0)+1 ;
+        editor.putInt("idProduit",idProduit);
+        editor.putString("nomProduit",nomProduit);
+        editor.putInt("quantite",quantite);
+        editor.putString("image",image);
+        editor.putString("references",references);
+        editor.putInt("idEntrepot",idEntrepot);
+        editor.commit();
     }
 
-    public void modifierProduit(String idProduit,ArrayList<Produit> produits, String newNom,int newQuantite, String newImage, String newReference ) {
-        ArrayList<Produit> produitsListe = produits;
-        for (int i = 0; i < produitsListe.size(); i++) {
-            if (produitsListe.get(i).equals(idProduit)) {
-                produitsListe.get(i).setNomProduit(newNom);
-                produitsListe.get(i).setQuantite(newQuantite);
-                produitsListe.get(i).setImage(newImage);
-                produitsListe.get(i).setReferences(newReference);
-                // sharedPreferrences à supprimer des shared preferences
-            }
+    public void modifierProduit(int id , String nomModif,int newQuantite, String newImage, String newReference, Context c) {
+        Context context = c;
+        SharedPreferences sharedPreferencesProduit = context.getSharedPreferences("Produit",0);
+        SharedPreferences.Editor editor = sharedPreferencesProduit.edit();
+        if (sharedPreferencesProduit.getInt("idEntrepot",0) == id){
+            editor.putString("nomProduit",nomModif);
+            editor.putInt("quantite",newQuantite);
+            editor.putString("image",newImage);
+            editor.putString("references",newReference);
+            editor.commit();
         }
     }
 
-        public void supprimerProduit (String idProduit, ArrayList < Produit > produits){
-            ArrayList<Produit> produitsListe = produits;
-            for (int i = 0; i < produitsListe.size(); i++) {
-                if (produitsListe.get(i).equals(idProduit)) {
-                    produitsListe.remove(i);
-                    // sharedPreferrences à supprimer des shared preferences
-                }
+        public void supprimerProduit (int id, Context c){
+            Context context = c;
+            SharedPreferences sharedPreferencesProduit = context.getSharedPreferences("Entrepot",0);
+            SharedPreferences.Editor editor = sharedPreferencesProduit.edit();
+            if (sharedPreferencesProduit.getInt("idEntrepot",0) == id){
+                editor.remove("idProduit").apply();
+                editor.remove("nomProduit").apply();
+                editor.remove("quantite").apply();
+                editor.remove("image").apply();
+                editor.remove("references").apply();
+                editor.remove("idEntrepot").apply();
+                editor.commit();
             }
-
         }
     }

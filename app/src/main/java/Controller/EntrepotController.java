@@ -1,45 +1,52 @@
 package Controller;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import java.io.*;
 
 import Model.Entrepot;
 import Model.Produit;
 
 public class EntrepotController {
 
-    public ArrayList<Entrepot> ajouterEntrepot(int idProduit, String nomEntrepot, ArrayList<Entrepot> entrepots){
-        ArrayList<Entrepot> entrepotsList = entrepots;
-        ArrayList<Produit> produits = new ArrayList<>();
-        Entrepot entrepot =  new Entrepot(idProduit,nomEntrepot,produits);
-        entrepotsList.add(entrepot);
+    public void ajouterEntrepot( String nomEntrepot, Context c){
+        Context context = c;
+        SharedPreferences sharedPreferencesEntrepot = context.getSharedPreferences("Entrepot",0);
+        SharedPreferences.Editor editor = sharedPreferencesEntrepot.edit();
 
+        int idProduit = sharedPreferencesEntrepot.getInt("idEntrepot",0)+1 ;
+        editor.putInt("idEntrepot",idProduit);
+        editor.putString("nomEntrepot",nomEntrepot);
+        editor.commit();
 //sharedPreferences a rajouter
 
-
-        return  entrepotsList;
     }
 
-    public void modifierNomEntrepot(String nom ,String nomModif, ArrayList<Entrepot> entrepots){
-        ArrayList<Entrepot> entrepotsList = entrepots;
-        Entrepot entrepot =  new Entrepot();
-        for (int i=0 ; i< entrepotsList.size();i++){
-            if (entrepotsList.get(i).equals(nom)){
-                entrepotsList.get(i).setNomEntrepot(nomModif);
-              // sharedPreferrences à modifier
-            }
+    public void modifierNomEntrepot(int id ,String nomModif,  Context c){
+        Context context = c;
+        SharedPreferences sharedPreferencesEntrepot = context.getSharedPreferences("Entrepot",0);
+        SharedPreferences.Editor editor = sharedPreferencesEntrepot.edit();
+        if (sharedPreferencesEntrepot.getInt("idEntrepot",0) == id){
+            editor.putString("nomEntrepot",nomModif);
+            editor.commit();
         }
     }
 
-    public void supprimerEntrepot(String nom, ArrayList<Entrepot> entrepots){
-        ArrayList<Entrepot> entrepotsList = entrepots;
-        Entrepot entrepot =  new Entrepot();
-        for (int i=0 ; i< entrepotsList.size();i++){
-            if (entrepotsList.get(i).equals(nom)){
-                entrepotsList.remove(i);
-                // sharedPreferrences à supprimer des shared preferences
-            }
+    public void supprimerEntrepot(int id, String nom, Context c){
+        Context context = c;
+        SharedPreferences sharedPreferencesEntrepot = context.getSharedPreferences("Entrepot",0);
+        SharedPreferences.Editor editor = sharedPreferencesEntrepot.edit();
+        if (sharedPreferencesEntrepot.getInt("idEntrepot",0) == id){
+            editor.remove("idEntrepot").apply();
+            editor.remove("nomEntrepot").apply();
+            editor.commit();
         }
+
+
     }
 
 
