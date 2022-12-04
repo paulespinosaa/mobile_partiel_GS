@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GeStock</string>
+    <string name="retour_arriere">Retour arrière</string>
+    <string name="nos_entrepots">Nos entrepôts</string>
+    <string name="bouton_ajouter">Bouton ajouter</string>
 </resources>

@@ -2,33 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/appbar_color">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="2dp">
+        android:layout_height="wrap_content">
 
         <ImageButton
-            android:id="@+id/icon7888"
+            android:id="@+id/arrowBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
-            android:contentDescription="test"
-            android:background="@color/white"
+            android:contentDescription="@string/retour_arriere"
+            android:background="@color/appbar_color"
             android:src="@drawable/ic_arrow_back">
         </ImageButton>
 
         <ImageView
             android:layout_width="200dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_marginStart="60dp"
-            android:layout_toEndOf="@+id/icon7888"
-            android:src="@drawable/logo_transparent">
+            android:layout_toEndOf="@+id/arrowBack"
+            android:src="@drawable/gestock_logo">
 
         </ImageView>
-
 
     </RelativeLayout>
 
