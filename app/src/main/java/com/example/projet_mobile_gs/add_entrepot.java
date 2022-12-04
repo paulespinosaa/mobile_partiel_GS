@@ -57,6 +57,4 @@ public class add_entrepot extends AppCompatActivity {
 
 
     }
-
-
 }
