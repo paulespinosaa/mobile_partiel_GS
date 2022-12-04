@@ -1,6 +1,7 @@
 package Model;
 
 public class Produit {
+    private int idProduit;
     private String nomProduit;
     private int quantite;
     private String image;
@@ -8,11 +9,20 @@ public class Produit {
 
     public Produit(){}
 
-    public Produit(String nomProduit, int quantite, String image, String references){
+    public Produit(int idProduit,String nomProduit, int quantite, String image, String references){
+        this.idProduit = idProduit;
         this.nomProduit = nomProduit;
         this.quantite = quantite;
         this.image = image;
         this.references = references;
+    }
+
+    public int getIdProduit() {
+        return idProduit;
+    }
+
+    public void setIdProduit(int idProduit) {
+        this.idProduit = idProduit;
     }
 
     public String getNomProduit() {
