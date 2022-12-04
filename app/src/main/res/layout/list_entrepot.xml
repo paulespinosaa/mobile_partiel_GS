@@ -33,17 +33,10 @@
                 android:textAlignment="center"
                 android:layout_marginTop="85dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <ListView
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:padding="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/arround_corners_beige">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="357dp" />
 
             <ImageButton
                 android:id="@+id/boutonAdd"

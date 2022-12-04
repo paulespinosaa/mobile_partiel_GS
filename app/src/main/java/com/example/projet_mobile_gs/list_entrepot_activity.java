@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,7 +19,7 @@ public class list_entrepot_activity extends AppCompatActivity {
 
     private ImageButton addButton;
     private ImageButton arrowBack;
-    private RecyclerView listeAffichage;
+    private ListView listeAffichage;
 
     private static ArrayAdapter arrayAdapter;
     private static ArrayList<String> entrepots = new ArrayList<>();
@@ -27,17 +28,16 @@ public class list_entrepot_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_entrepot);
 
-        listeAffichage = (RecyclerView) findViewById(R.id.recyclerView);
+        listeAffichage = (ListView) findViewById(R.id.listView);
         SharedPreferences sharedPreferencesEntrepot = getApplication().getSharedPreferences("Entrepot",0);
-        if (sharedPreferencesEntrepot != null){
-            HashSet<String> nomEntrepot = (HashSet<String>) sharedPreferencesEntrepot.getStringSet("nomEntrepot", null);
+        HashSet<String> nomEntrepot = (HashSet<String>) sharedPreferencesEntrepot.getStringSet("nomEntrepot", null);
+        if (nomEntrepot != null){
             entrepots = new ArrayList<>(nomEntrepot);
-            arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, entrepots);
-
-           // listeAffichage.setAdapter((ArrayAdapter) arrayAdapter);
         }
 
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, entrepots);
 
+        listeAffichage.setAdapter((ArrayAdapter) arrayAdapter);
 
 
         arrowBack = findViewById(R.id.arrowBack);
