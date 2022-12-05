@@ -72,7 +72,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(), add_entrepot.class);
+                Intent intent = new Intent(context.getApplicationContext(), list_produit.class);
                 intent.putExtra("entrepotID", entrepot.getIdEntrepot());
                 intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                 context.getApplicationContext().startActivity(intent);

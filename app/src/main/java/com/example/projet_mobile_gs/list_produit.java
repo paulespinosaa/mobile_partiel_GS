@@ -41,7 +41,7 @@ public class list_produit extends AppCompatActivity {
 
         RealmResults<Produit> produitsList =  realm.where(Produit.class).findAll();
 
-        RecyclerView recyclerView2 = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         MyAdapterProduit myAdapterProduit = new MyAdapterProduit(getApplicationContext(), produitsList);
         recyclerView2.setAdapter(myAdapterProduit);
