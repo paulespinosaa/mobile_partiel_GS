@@ -51,7 +51,9 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                    public boolean onMenuItemClick(MenuItem item) {
                        if(item.getTitle().equals("Delete")){
                            Realm realm = Realm.getDefaultInstance();
+                           RealmResults<Produit> produitsList =  realm.where(Produit.class).equalTo("idEntrepot",entrepot.getIdEntrepot()).findAll();
                            realm.beginTransaction();
+                           produitsList.deleteAllFromRealm();
                            entrepot.deleteFromRealm();
                            realm.commitTransaction();
                        }
