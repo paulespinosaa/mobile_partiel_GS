@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/object_image"
-            android:layout_width="88dp"
+            android:layout_width="60dp"
             android:layout_height="50dp"
             android:background="@drawable/generix___dossier_gestion_des_entrepots"
             android:contentDescription="Image objet"

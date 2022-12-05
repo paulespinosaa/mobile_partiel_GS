@@ -23,7 +23,7 @@ public class EditProduit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
         int entrepotID = getIntent().getIntExtra("entrepotID", 0);
-        String nomProduit = getIntent().getStringExtra("entrepotID");
+        String nomProduit = getIntent().getStringExtra("nomProduit");
         String quantiteProduitAncien = getIntent().getStringExtra("quantite");
 
         nomProduitInput = findViewById(R.id.nomProduitOut);
