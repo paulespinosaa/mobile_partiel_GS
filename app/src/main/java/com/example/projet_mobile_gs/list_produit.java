@@ -26,11 +26,14 @@ public class list_produit extends AppCompatActivity {
         arrowBack = findViewById(R.id.arrowBack);
         arrowBack.setVisibility(View.VISIBLE);
 
+        int entrepotID = getIntent().getIntExtra("entrepotID", 0);
+
         addButton = findViewById(R.id.boutonAdd2);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), add_produit.class);
+                intent.putExtra("entrepotID", entrepotID);
                 startActivity(intent);
             }
         });
