@@ -41,6 +41,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
            public boolean onLongClick(View v) {
                PopupMenu menu =  new PopupMenu(context,v);
                menu.getMenu().add("Delete");
+               menu.getMenu().add("Edit");
                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                    @Override
                    public boolean onMenuItemClick(MenuItem item) {
@@ -53,14 +54,16 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                        if(item.getTitle().equals("Edit")){
                            Intent intent = new Intent(context.getApplicationContext(), EditEntrepotNameActivity.class);
                            intent.putExtra("entrepotName", entrepot.getNomEntrepot());
+                           intent.putExtra("entrepot", String.valueOf(entrepot));
+                           intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                            context.getApplicationContext().startActivity(intent);
                        }
                        return true;
                    }
                });
+               menu.show();
                return true;
            }
-
        });
     }
 
