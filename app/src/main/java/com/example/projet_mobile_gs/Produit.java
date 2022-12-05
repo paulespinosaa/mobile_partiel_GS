@@ -1,21 +1,15 @@
 package com.example.projet_mobile_gs;
 
 
-public class Produit {
+import io.realm.RealmObject;
+
+public class Produit extends RealmObject {
 
     private String nomProduit;
     private int quantite;
-    private String references;
+    private int idEntrepot;
 
 
-
-    public Produit(String nomProduit, int quantite, String references){
-
-        this.nomProduit = nomProduit;
-        this.quantite = quantite;
-
-        this.references = references;
-    }
 
 
 
@@ -35,13 +29,11 @@ public class Produit {
         this.quantite = quantite;
     }
 
-
-
-    public String getReferences() {
-        return references;
+    public int getIdEntrepot() {
+        return idEntrepot;
     }
 
-    public void setReferences(String references) {
-        this.references = references;
+    public void setIdEntrepot(int idEntrepot) {
+        this.idEntrepot = idEntrepot;
     }
 }

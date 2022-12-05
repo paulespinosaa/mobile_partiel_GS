@@ -9,7 +9,10 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class add_entrepot extends AppCompatActivity {
 
@@ -42,10 +45,16 @@ public class add_entrepot extends AppCompatActivity {
         ajouterEntrepot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<Produit> produits = new ArrayList<>();
                 String nomEntrepot = nomEntrepotInput.getText().toString();
                 realm.beginTransaction();
                 Entrepot entrepot =  realm.createObject(Entrepot.class);
                 entrepot.setNomEntrepot(nomEntrepot);
+
+                RealmResults<Entrepot> entrepots = realm.where(Entrepot.class).findAll();
+
+                int id = (int) entrepots.size()+1;
+                entrepot.setIdEntrepot(id);
                 realm.commitTransaction();
                 finish();
 

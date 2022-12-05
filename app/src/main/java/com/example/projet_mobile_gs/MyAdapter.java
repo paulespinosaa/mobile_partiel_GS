@@ -54,7 +54,6 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                        if(item.getTitle().equals("Edit")){
                            Intent intent = new Intent(context.getApplicationContext(), EditEntrepotNameActivity.class);
                            intent.putExtra("entrepotName", entrepot.getNomEntrepot());
-                           intent.putExtra("entrepot", String.valueOf(entrepot));
                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                            context.getApplicationContext().startActivity(intent);
                        }
