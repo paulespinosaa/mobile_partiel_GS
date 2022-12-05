@@ -36,6 +36,7 @@ public class add_produit extends AppCompatActivity {
         quantiteProduitIn = findViewById(R.id.quantiteProduitOut);
         ajouterProduit = findViewById(R.id.boutonSave2);
 
+        int entrepotID = getIntent().getIntExtra("entrepotID", 0);
 
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
@@ -45,13 +46,13 @@ public class add_produit extends AppCompatActivity {
             public void onClick(View v) {
 
                 String nomProduit = nomProduitIn.getText().toString();
-                int quantite = Integer.valueOf(nomProduitIn.getText().toString());
+                int quantite = Integer.valueOf(quantiteProduitIn.getText().toString());
                 realm.beginTransaction();
                 Produit produit =  realm.createObject(Produit.class);
                 produit.setNomProduit(nomProduit);
                 produit.setQuantite(quantite);
-                produit.setIdEntrepot(quantite);
-                RealmResults<Entrepot> entrepots = realm.where(Entrepot.class).findAll();
+                produit.setIdEntrepot(entrepotID);
+                RealmResults<Produit> produits = realm.where(Produit.class).findAll();
                 realm.commitTransaction();
                 finish();
 
