@@ -1,7 +1,10 @@
 package com.example.projet_mobile_gs;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +45,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                PopupMenu menu =  new PopupMenu(context,v);
                menu.getMenu().add("Delete");
                menu.getMenu().add("Edit");
+               Log.w(TAG,"IIIIID : "+ entrepot.getIdEntrepot());
                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                    @Override
                    public boolean onMenuItemClick(MenuItem item) {
@@ -53,7 +57,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                        }
                        if(item.getTitle().equals("Edit")){
                            Intent intent = new Intent(context.getApplicationContext(), EditEntrepotNameActivity.class);
-                           intent.putExtra("entrepotName", entrepot.getNomEntrepot());
+                           intent.putExtra("entrepotID", entrepot.getIdEntrepot());
                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                            context.getApplicationContext().startActivity(intent);
                        }
@@ -64,6 +68,17 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                return true;
            }
        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context.getApplicationContext(), add_entrepot.class);
+                intent.putExtra("entrepotID", entrepot.getIdEntrepot());
+                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                context.getApplicationContext().startActivity(intent);
+
+            }
+        });
     }
 
     @Override
