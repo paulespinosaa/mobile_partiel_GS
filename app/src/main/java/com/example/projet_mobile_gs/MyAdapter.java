@@ -1,6 +1,7 @@
 package com.example.projet_mobile_gs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,11 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                            realm.beginTransaction();
                            entrepot.deleteFromRealm();
                            realm.commitTransaction();
+                       }
+                       if(item.getTitle().equals("Edit")){
+                           Intent intent = new Intent(context.getApplicationContext(), EditEntrepotNameActivity.class);
+                           intent.putExtra("entrepotName", entrepot.getNomEntrepot());
+                           context.getApplicationContext().startActivity(intent);
                        }
                        return true;
                    }
