@@ -34,7 +34,7 @@
                 android:layout_marginTop="85dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/recyclerView2"
                 android:layout_width="350dp"
                 android:layout_height="400dp"
                 android:layout_gravity="center"
@@ -47,7 +47,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <ImageButton
-                android:id="@+id/boutonAdd"
+                android:id="@+id/boutonAdd2"
                 android:layout_width="130dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"

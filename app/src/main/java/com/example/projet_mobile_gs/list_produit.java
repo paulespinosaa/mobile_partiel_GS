@@ -13,24 +13,24 @@ import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
-public class list_entrepot_activity extends AppCompatActivity {
+public class list_produit extends AppCompatActivity {
 
     private ImageButton addButton;
     private ImageButton arrowBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_entrepot);
+        setContentView(R.layout.list_item);
 
         arrowBack = findViewById(R.id.arrowBack);
-        arrowBack.setVisibility(View.INVISIBLE);
+        arrowBack.setVisibility(View.VISIBLE);
 
-        // Prise en compte du bouton et lancement de l'intent add_entrepot
-        addButton = findViewById(R.id.boutonAdd);
+        addButton = findViewById(R.id.boutonAdd2);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), add_entrepot.class);
+                Intent intent = new Intent(getApplicationContext(), add_produit.class);
                 startActivity(intent);
             }
         });
@@ -39,18 +39,21 @@ public class list_entrepot_activity extends AppCompatActivity {
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
 
-        RealmResults<Entrepot> entrepotsList =  realm.where(Entrepot.class).findAll();
+        RealmResults<Produit> produitsList =  realm.where(Produit.class).findAll();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), entrepotsList);
-        recyclerView.setAdapter(myAdapter);
+        RecyclerView recyclerView2 = findViewById(R.id.recyclerView);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapterProduit myAdapterProduit = new MyAdapterProduit(getApplicationContext(), produitsList);
+        recyclerView2.setAdapter(myAdapterProduit);
 
-        entrepotsList.addChangeListener(new RealmChangeListener<RealmResults<Entrepot>>() {
+        produitsList.addChangeListener(new RealmChangeListener<RealmResults<Produit>>() {
             @Override
-            public void onChange(RealmResults<Entrepot> entrepots) {
-                myAdapter.notifyDataSetChanged();
+            public void onChange(RealmResults<Produit> produits) {
+                myAdapterProduit.notifyDataSetChanged();
             }
         });
     }
+
+
+
 }
