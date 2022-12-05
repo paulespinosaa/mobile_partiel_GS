@@ -7,7 +7,7 @@ public class Produit {
     private int quantite;
     private String references;
 
- 
+
 
     public Produit(String nomProduit, int quantite, String references){
 

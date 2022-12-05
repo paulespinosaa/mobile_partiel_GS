@@ -2,14 +2,13 @@ package com.example.projet_mobile_gs;
 
 import java.util.ArrayList;
 
-public class Entrepot {
+import io.realm.RealmObject;
+
+public class Entrepot extends RealmObject {
 
     private String nomEntrepot;
 
-    public Entrepot(String nomEntrepot) {
-        this.nomEntrepot = nomEntrepot;
 
-    }
 
     public void setNomEntrepot(String nomEntrepot) {
         this.nomEntrepot = nomEntrepot;
