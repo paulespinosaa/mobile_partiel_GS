@@ -34,6 +34,8 @@ public class add_produit extends AppCompatActivity {
 
         nomProduitIn = findViewById(R.id.nomProduitOut);
         quantiteProduitIn = findViewById(R.id.quantiteProduitOut);
+        ajouterProduit = findViewById(R.id.boutonSave2);
+
 
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
