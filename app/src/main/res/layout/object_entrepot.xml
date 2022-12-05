@@ -19,7 +19,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             tools:text="Description"
-            android:contentDescription="Image objet" />
+            android:contentDescription="Image objet"
+            android:background="@drawable/generix___dossier_gestion_des_entrepots"/>
 
         <TextView
             android:id="@+id/object_title"
