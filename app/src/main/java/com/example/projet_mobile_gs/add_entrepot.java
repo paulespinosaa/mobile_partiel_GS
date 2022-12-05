@@ -53,7 +53,7 @@ public class add_entrepot extends AppCompatActivity {
 
                 RealmResults<Entrepot> entrepots = realm.where(Entrepot.class).findAll();
 
-                int id = (int) entrepots.size()+1;
+                int id = (int) entrepots.size();
                 entrepot.setIdEntrepot(id);
                 realm.commitTransaction();
                 finish();
