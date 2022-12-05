@@ -38,7 +38,7 @@ public class MyAdapterProduit extends RecyclerView.Adapter<MyAdapterProduit.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder2 holder, int position) {
             Produit produit = produitList.get(position);
             holder.nomProduitOut.setText(produit.getNomProduit());
-            holder.quantiteProduitOut.setText(produit.getQuantite());
+            holder.quantiteProduitOut.setText(produit.getQuantite() + "");
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class MyAdapterProduit extends RecyclerView.Adapter<MyAdapterProduit.MyVi
                             realm.commitTransaction();
                         }
                         if(item.getTitle().equals("Edit")){
-                            Intent intent = new Intent(context.getApplicationContext(), EditEntrepotNameActivity.class);
+                            Intent intent = new Intent(context.getApplicationContext(), EditProduit.class);
                             intent.putExtra("nomProduit",produit.getNomProduit());
                             intent.putExtra("quantite",produit.getQuantite());
                             intent.putExtra("entrepotID", produit.getIdEntrepot());

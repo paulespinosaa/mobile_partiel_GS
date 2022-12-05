@@ -27,6 +27,12 @@ public class list_produit extends AppCompatActivity {
 
         arrowBack = findViewById(R.id.arrowBack);
         arrowBack.setVisibility(View.VISIBLE);
+        arrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         int entrepotID = getIntent().getIntExtra("entrepotID", 0);
 

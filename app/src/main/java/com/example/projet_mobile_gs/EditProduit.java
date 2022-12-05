@@ -41,7 +41,7 @@ public class EditProduit extends AppCompatActivity {
         }
 
         nomProduitInput.setText(newProduit.getNomProduit());
-        quantiteProduit.setText(newProduit.getQuantite());
+        quantiteProduit.setText(newProduit.getQuantite() + "");
 
         Realm.init(getApplicationContext());
 
