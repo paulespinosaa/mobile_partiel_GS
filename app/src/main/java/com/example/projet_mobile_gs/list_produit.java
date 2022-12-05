@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
@@ -42,8 +44,8 @@ public class list_produit extends AppCompatActivity {
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
 
-        RealmResults<Produit> produitsList =  realm.where(Produit.class).findAll();
-
+        RealmResults<Produit> produitsList =  realm.where(Produit.class).equalTo("Produit.idEntrepot",entrepotID).findAll();
+        
         RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         MyAdapterProduit myAdapterProduit = new MyAdapterProduit(getApplicationContext(), produitsList);
